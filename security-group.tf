@@ -7,16 +7,16 @@ resource "aws_security_group" "allow_mysql" {
   # Inbound rules
   ingress {
     description = "Allow Rds from local network"
-    from_port   = 3306
-    to_port     = 3306
+    from_port   = var.MYSQL_RDS_PORT
+    to_port     = var.MYSQL_RDS_PORT
     protocol    = "tcp"
     cidr_blocks = [data.terraform_remote_state.vpc.outputs.DEFAULT_VPC_CIDR]
   }
 
     ingress {
     description = "Allow Rds from local network"
-    from_port   = 3306
-    to_port     = 3306
+    from_port   = var.MYSQL_RDS_PORT
+    to_port     = var.MYSQL_RDS_PORT
     protocol    = "tcp"
     cidr_blocks = [data.terraform_remote_state.vpc.outputs.VPC_CIDR]
   }

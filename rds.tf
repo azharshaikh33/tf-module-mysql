@@ -1,10 +1,10 @@
 resource "aws_db_instance" "mysql" {
   identifier             = "roboshop-${var.ENV}"
-  allocated_storage      = 10
+  allocated_storage      = var.MYSQL_RDS_STORAGE
   db_name                = "mydb"
   engine                 = "mysql"
-  engine_version         = "5.7"
-  instance_class         = "db.t3.micro"
+  engine_version         = var.MYSQL_RDS_ENGINE_VERSION
+  instance_class         = var.MYSQL_RDS_INSTANCE_CLASS
   username               = "admin1"
   password               = "RoboShop1"
   parameter_group_name   = aws_db_parameter_group.mysql_pg.name
@@ -15,7 +15,7 @@ resource "aws_db_instance" "mysql" {
 
 resource "aws_db_parameter_group" "mysql_pg" {
   name   = "roboshop-${var.ENV}-mysql-pg"
-  family = "mysql5.7"
+  family = "mysql${MYSQL_RDS_ENGINE_VERSION}"
 }
 
 resource "aws_db_subnet_group" "mysql_subnet_group" {
