@@ -4,7 +4,7 @@ resource "aws_db_instance" "mysql" {
   db_name                = "mydb"
   engine                 = "mysql"
   engine_version         = var.MYSQL_RDS_ENGINE_VERSION
-  instance_class         = var.MYSQL_RDS_INSTANCE_CLASS
+  instance_class         = var.MYSQL_RDS_INSTANCE_TYPE
   username               = "admin1"
   password               = "RoboShop1"
   parameter_group_name   = aws_db_parameter_group.mysql_pg.name
